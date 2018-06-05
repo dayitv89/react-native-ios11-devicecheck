@@ -1,0 +1,29 @@
+{
+	"name": "react-native-ios11-devicecheck",
+	"version": "0.0.1",
+	"author": "Gaurav D. Sharma <er.gauravds@gmail.com>",
+	"description": "Quick firebase integration with phone auth and analytics",
+	"homepage": "https://github.com/dayitv89/react-native-ios11-devicecheck.git",
+	"main": "index.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/dayitv89/react-native-ios11-devicecheck.git"
+	},
+	"license": "MIT",
+	"keywords": [
+		"react",
+		"react-native",
+		"ios 11",
+		"device check",
+		"dcdevice",
+		"dcdevicecheck"
+	],
+	"files": [
+		"index.js",
+		"ios/"
+	],
+	"peerDependencies": {
+		"react": "*",
+		"react-native": ">= 0.45.0"
+	}
+}
