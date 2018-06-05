@@ -1,9 +1,9 @@
 # react-native-ios11-devicecheck (RNIOS11DeviceCheck)
 
-React Native implementation for Apple iOS 11 DeviceCheck DCDevice API. In android always comes on `Promise.reject('device not supported')`
+React Native implementation for Apple iOS 11 DeviceCheck DCDevice API. Except iOS platform always comes on `Promise.reject('Other than iOS platform not supported')`
 
-![](https://img.shields.io/badge/pod_RNIOS11DeviceCheck-v0.0.2-green.svg?style=flat)
-![](https://img.shields.io/badge/npm_react--native--ios11--devicecheck-v0.0.2-green.svg?style=flat)
+![](https://img.shields.io/badge/pod_RNIOS11DeviceCheck-v0.0.3-green.svg?style=flat)
+![](https://img.shields.io/badge/npm_react--native--ios11--devicecheck-v0.0.3-green.svg?style=flat)
 
 # Uses:
 
