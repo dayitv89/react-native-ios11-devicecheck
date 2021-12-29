@@ -31,7 +31,20 @@ const generateKey = (): Promise => {
 	return Promise.reject('Other than iOS platform not supported');
 };
 
+const attestKey = (keyId, challenge): Promise => {
+	if (Platform.OS === 'ios') {
+		return new Promise((resolve, reject) =>
+			bridge
+				.attestKey(keyId, challenge)
+				.then(resolve)
+				.catch(reject)
+		);
+	}
+	return Promise.reject('Other than iOS platform not supported');
+};
+
 module.exports = {
 	getToken,
-	generateKey
+	generateKey,
+	attestKey
 };
