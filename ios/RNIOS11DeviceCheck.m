@@ -46,4 +46,36 @@ RCT_EXPORT_METHOD(getToken:(RCTPromiseResolveBlock)resolve
     }
 }
 
+RCT_EXPORT_METHOD(generateKey:(RCTPromiseResolveBlock)resolve
+                  rejecter:(RCTPromiseRejectBlock)reject) {
+    FailureHandleErrorBlock failureBlock = ^void(NSError* error, NSString *errorType) {
+        NSString *errorDomain = [NSString stringWithFormat:@"com.apple.devicecheck.error.%@", errorType ?: @"ios-version-not-supported"];
+        if (!error) {
+            error = [[NSError alloc] initWithDomain:errorDomain
+                code:400
+                userInfo:@{NSLocalizedDescriptionKey: @"This device does not support Apple AppAttest API, due to below iOS 14 version or simulator."}
+            ];
+        }
+        reject(errorDomain, error.localizedDescription, error);
+    };
+    
+    if (@available(iOS 14.0, *)) {
+        if (DCAppAttestService.sharedService.isSupported) {
+            [DCAppAttestService.sharedService generateKeyWithCompletionHandler:^(NSString * _Nullable keyId, NSError * _Nullable error) {
+                if (!error && keyId && keyId.length > 0) {
+                    resolve(keyId);
+                } else if (error) {
+                    failureBlock(error, @"cannot-create");
+                } else {
+                    failureBlock(nil, @"unknown-trouble-to-generate-key");
+                }
+            }];
+        } else {
+            failureBlock(nil, @"device-not-supported");
+        }
+    } else {
+        failureBlock(nil, nil);
+    }
+}
+
 @end
