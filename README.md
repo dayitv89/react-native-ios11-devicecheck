@@ -1,6 +1,6 @@
 # react-native-ios11-devicecheck (RNIOS11DeviceCheck)
 
-React Native implementation for Apple iOS 11 DeviceCheck DCDevice API. Except iOS platform always comes on `Promise.reject('Other than iOS platform not supported')`
+React Native implementation for Apple iOS 11 DeviceCheck DCDevice API and Apple iOS 14 DeviceCheck DCAppAttestService API. Except iOS platform always comes on `Promise.reject('Other than iOS platform not supported')`
 
 ![](https://img.shields.io/badge/pod_RNIOS11DeviceCheck-v0.0.3-green.svg?style=flat)
 ![](https://img.shields.io/badge/npm_react--native--ios11--devicecheck-v0.0.3-green.svg?style=flat)
@@ -14,7 +14,7 @@ React Native implementation for Apple iOS 11 DeviceCheck DCDevice API. Except iO
 
 `$ npm i --save react-native-ios11-devicecheck`
 
-# Implemtation (iOS Only using cocoapods, no need to do anything on android):
+# DCDevice implementation (iOS Only using cocoapods, no need to do anything on android):
 
 `pod 'RNIOS11DeviceCheck', :path => '../node_modules/react-native-ios11-devicecheck/ios'`
 
@@ -30,6 +30,34 @@ export default class App extends React.Component {
 		RNIOS11DeviceCheck
 			.getToken()
 			.then(console.warn)
+			.catch(console.warn);
+	};
+
+	render = () => <View style={{ flex: 1, backgroundColor: 'white' />;
+}
+```
+
+# DCAppAttestService implementation (iOS Only using cocoapods, no need to do anything on android):
+
+`pod 'RNIOS11DeviceCheck', :path => '../node_modules/react-native-ios11-devicecheck/ios'`
+
+Try inside javascript code: `index.js`
+
+```javascript
+import React from 'react';
+import { View } from 'react-native';
+import RNIOS11DeviceCheck from 'react-native-ios11-devicecheck';
+
+export default class App extends React.Component {
+	componentDidMount = () => {
+		const challenge = 'ABDCEFGHIJKL' // retrieve a challenge from your app's backend server
+
+		RNIOS11DeviceCheck
+			.generateKey()
+			.then(keyId => {
+				return RNIOS11DeviceCheck.attestKey(keyId, challenge)
+			})
+			.then(console.warn) // send the attestationKey to your app's backend server
 			.catch(console.warn);
 	};
 
