@@ -2,7 +2,7 @@
 	"name": "react-native-ios11-devicecheck",
 	"version": "0.0.3",
 	"author": "Gaurav D. Sharma <er.gauravds@gmail.com>",
-	"description": "React Native implementation for Apple iOS 11 DeviceCheck DCDevice API.",
+	"description": "React Native implementation for Apple iOS 11 DeviceCheck DCDevice API and Apple iOS 14 DeviceCheck DCAppAttestService API.",
 	"homepage": "https://github.com/dayitv89/react-native-ios11-devicecheck.git",
 	"main": "index.js",
 	"repository": {
